@@ -1,13 +1,11 @@
-package com.pauldaniv.retrofit2.application.test;
+package com.pauldaniv.aws.s3.application.test;
 
-//import com.pauldaniv.test.clients.EnableRetrofitClients;
-import com.paul.hello.MyRestApi;
-import com.pauldaniv.retrofit2.client.EnableRetrofitClients;
+import com.pauldaniv.aws.s3.client.S3StorageClient;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-        import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +20,8 @@ public class Application {
     @RequestMapping("/test")
     public static class TestController {
         @Autowired
-        private TestClient testClient;
-        @Autowired
-        private MyRestApi test;
+        private S3StorageClient s3StorageClient;
+
         @GetMapping
         String test() {
             return "It's working";

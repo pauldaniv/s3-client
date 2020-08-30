@@ -1,3 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.pauldaniv.retrofit2.client.RetrofitAutoconfiguration
-
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.pauldaniv.aws.s3.client.AwsS3Autoconfiguration

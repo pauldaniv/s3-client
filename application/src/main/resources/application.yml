@@ -1,7 +1,12 @@
-retrofit.services:
-  myTestClient:
-    url: http://localhost:4202
-    writeTimeout: 50
-  myRestApi:
-    url: http://localhost:4202
-    writeTimeout: 50
+s3:
+  credentials:
+    accessKey: ${AWS_ACCESS_KEY:dummy}
+    secretKey: ${AWS_SECRET_KEY:dummy}
+  region: ${S3_REGION:us-east-1}
+  bucket: ${S3_BUCKET:dummy}
+  endpoint: https://${s3.region}.amazonaws.com
+
+#logging:
+#  level:
+#    org:
+#      springframework: DEBUG

@@ -7,7 +7,7 @@ plugins {
   `maven-publish`
   kotlin("jvm") version "1.3.72" apply false
   kotlin("plugin.spring") version "1.3.72" apply false
-  id("org.springframework.boot") version "2.3.3.RELEASE" apply false
+  id("org.springframework.boot") version "2.2.0.RELEASE" apply false
   id("io.spring.dependency-management") version "1.0.10.RELEASE" apply false
   id("io.freefair.lombok") version "5.1.1" apply false
 }
@@ -19,7 +19,7 @@ val publishingKey: String? = findParam("gpr.key", "GITHUB_TOKEN")
 val packageRepoKey = findParam("TOKEN", "PACKAGES_ACCESS_TOKEN") ?: publishingKey
 
 subprojects {
-  group = "com.pauldaniv.retrofit2"
+  group = "com.pauldaniv.aws.s3"
 
   apply(plugin = "idea")
   apply(plugin = "kotlin")
@@ -51,7 +51,6 @@ subprojects {
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.springframework.boot:spring-boot-autoconfigure-processor")
-    implementation("com.asprise.ocr:java-ocr-api:15.3.0.3")
     implementation("com.google.guava:guava:29.0-jre")
     testImplementation("org.assertj:assertj-core")
     implementation("org.codehaus.groovy:groovy:2.5.6")

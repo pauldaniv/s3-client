@@ -1,3 +1,3 @@
-rootProject.name = "retrofit2-client"
+rootProject.name = "s3-client"
 
 include("client", "application")
