@@ -4,7 +4,6 @@ s3:
     secretKey: ${AWS_SECRET_KEY:dummy}
   region: ${S3_REGION:us-east-1}
   bucket: ${S3_BUCKET:dummy}
-  endpoint: https://${s3.region}.amazonaws.com
 
 #logging:
 #  level:
