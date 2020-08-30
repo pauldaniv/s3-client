@@ -26,7 +26,5 @@ class AwsS3Autoconfiguration {
 
   @Bean
   @ConditionalOnMissingBean
-  fun s3StorageClient(s3Config: S3Config, s3: AmazonS3): S3StorageClient {
-    return S3StorageClient(s3Config, s3)
-  }
+  fun s3StorageClient(s3Config: S3Config, s3: AmazonS3): S3StorageClient = S3StorageClient(s3Config, s3)
 }
