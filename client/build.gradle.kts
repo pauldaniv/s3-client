@@ -1,4 +1,4 @@
-version = "0.0.2-SNAPSHOT"
+version = "0.0.3-SNAPSHOT"
 
 dependencies {
   api("com.amazonaws:aws-java-sdk:1.11.851")
