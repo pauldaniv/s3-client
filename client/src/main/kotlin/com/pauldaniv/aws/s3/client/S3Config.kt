@@ -8,8 +8,7 @@ import org.springframework.boot.context.properties.ConstructorBinding
 data class S3Config(
     val credentials: Credentials,
     val region: String,
-    val bucket: String,
-    val endpoint: String
+    val bucket: String
 ) {
   data class Credentials(val accessKey: String, val secretKey: String)
 }

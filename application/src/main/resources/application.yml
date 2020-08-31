@@ -1,9 +1,9 @@
 s3:
   credentials:
-    accessKey: ${AWS_ACCESS_KEY:dummy}
-    secretKey: ${AWS_SECRET_KEY:dummy}
+    accessKey: ${AWS_ACCESS_KEY}
+    secretKey: ${AWS_SECRET_KEY}
   region: ${S3_REGION:us-east-1}
-  bucket: ${S3_BUCKET:dummy}
+  bucket: ${S3_BUCKET}
 
 #logging:
 #  level:
