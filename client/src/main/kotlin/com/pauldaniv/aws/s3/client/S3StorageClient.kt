@@ -11,6 +11,8 @@ class S3StorageClient(
 ) {
   fun getFile(fileName: String) = s3.getObject(s3Config.bucket, fileName)
 
+  fun getFileMetadata(fileName: String) = s3.getObjectMetadata(s3Config.bucket, fileName)
+
   fun fileExists(fileName: String): Boolean = s3.doesObjectExist(s3Config.bucket, fileName)
 
   fun uploadFile(fileName: String, inputStream: InputStream, metadata: ObjectMetadata) =
