@@ -1,7 +1,7 @@
-version = "0.0.4-SNAPSHOT"
+version = "0.1.0-SNAPSHOT"
 
 dependencies {
-  api("com.amazonaws:aws-java-sdk:1.11.851")
+  api("software.amazon.awssdk:s3:2.14.27")
   testImplementation("org.assertj:assertj-core")
   testImplementation("org.junit.jupiter:junit-jupiter")
 }

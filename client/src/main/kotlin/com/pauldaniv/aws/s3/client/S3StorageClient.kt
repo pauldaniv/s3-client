@@ -1,22 +1,28 @@
 package com.pauldaniv.aws.s3.client
 
-import com.amazonaws.services.s3.AmazonS3
-import com.amazonaws.services.s3.model.DeleteObjectRequest
-import com.amazonaws.services.s3.model.ObjectMetadata
+import software.amazon.awssdk.core.sync.RequestBody
+import software.amazon.awssdk.services.s3.S3Client
+import software.amazon.awssdk.services.s3.model.*
 import java.io.InputStream
 
 class S3StorageClient(
     private val s3Config: S3Config,
-    private val s3: AmazonS3
+    private val s3: S3Client
 ) {
-  fun getFile(fileName: String) = s3.getObject(s3Config.bucket, fileName)
+  fun getFile(key: String) = s3.getObject(GetObjectRequest.builder().bucket(s3Config.bucket).key(key).build())
 
-  fun getFileMetadata(fileName: String) = s3.getObjectMetadata(s3Config.bucket, fileName)
+  fun getFileMetadata(key: String) = s3.headObject(HeadObjectRequest.builder().bucket(s3Config.bucket).key(key).build())
+      .metadata()
 
-  fun fileExists(fileName: String): Boolean = s3.doesObjectExist(s3Config.bucket, fileName)
+  fun fileExists(key: String) = try {
+    s3.headObject(HeadObjectRequest.builder().bucket(s3Config.bucket).key(key).build()).metadata() != null
+  } catch (e: NoSuchKeyException) {
+    false
+  }
 
-  fun uploadFile(fileName: String, inputStream: InputStream, metadata: ObjectMetadata) =
-      s3.putObject(s3Config.bucket, fileName, inputStream, metadata)
+  fun uploadFile(key: String, inputStream: InputStream, contentLength: Long) =
+      s3.putObject(PutObjectRequest.builder().bucket(s3Config.bucket).key(key)
+          .build(), RequestBody.fromInputStream(inputStream, contentLength))
 
-  fun deleteFile(fileName: String) = s3.deleteObject(DeleteObjectRequest(s3Config.bucket, fileName))
+  fun deleteFile(key: String) = s3.deleteObject(DeleteObjectRequest.builder().bucket(s3Config.bucket).key(key).build())
 }
